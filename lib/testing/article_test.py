@@ -1,9 +1,5 @@
 import pytest
-
-from classes.many_to_many import Article
-from classes.many_to_many import Magazine
-from classes.many_to_many import Author
-
+from classes.many_to_many import Article, Magazine, Author
 
 class TestArticle:
     """Article in many_to_many.py"""
@@ -104,13 +100,13 @@ class TestArticle:
 
     def test_get_all_articles(self):
         """Article class has all attribute"""
-        Article.all = []
+        Article.all_articles = []  # Reset the list
         author = Author("Carry Bradshaw")
         magazine_1 = Magazine("Vogue", "Fashion")
         magazine_2 = Magazine("AD", "Architecture & Design")
         article_1 = Article(author, magazine_1, "How to wear a tutu with style")
         article_2 = Article(author, magazine_2, "Dating life in NYC")
 
-        assert len(Article.all) == 2
-        assert article_1 in Article.all
-        assert article_2 in Article.all
+        assert len(Article.all_articles) == 2
+        assert article_1 in Article.all_articles
+        assert article_2 in Article.all_articles
